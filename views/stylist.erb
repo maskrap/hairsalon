@@ -1,0 +1,30 @@
+<h1>Stylist: </h1>
+
+<h3>Add a client:</h3>
+
+<div class="container">
+  <form action="/clients/new" method="post">
+    <label for="client_name">Name:</label>
+    <input id="client_name" name="client_name" type="text">
+
+    <button type="submit" class="btn btn-primary-outline">Add Client</button>
+  </form>
+</div>
+
+<div class="container">
+  <% if @clients.any?() %>
+    <h5>Click on a client to update their information:</h5>
+
+    <ul>
+      <% @clients.each do |client| %>
+      <li>
+        <a href="/clients/<%= client.id() %>"><%= client.name() %></a>
+
+      </li>
+      <% end %>
+    </ul>
+
+  <% else %>
+    <p>There are no clients because they cancelled after trying your food! Find some more clients!</p>
+  <% end %>
+</div>
