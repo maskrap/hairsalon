@@ -4,10 +4,20 @@
 
 <form action="/stylists" method="post">
   <label for="name">Name:</label>
-  <input id="name" name="name" type="text"></br>
-
-  <label for="author_id">Name of the author: </label>
-  <input id="author_id" name="author_id" type="text">
+  <input id="name" name="name" type="text">
 
   <button type="submit">Add Stylist</button>
 </form>
+
+<% if @stylists.any?() %>
+  <p>Click on a stylist to see their clients or update information:</p>
+
+  <ul>
+    <% @stylists.each do |stylist| %>
+    <li><a href="/stylists/<%= stylist.id() %>"><%= stylist.name() %></a></li>
+    <% end %>
+  </ul>
+
+<% else %>
+  <p>There are no stylists yet!</p>
+<% end %>
