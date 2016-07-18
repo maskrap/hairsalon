@@ -1,44 +1,8 @@
-<h1>Welcome, Guy Fieri, to your hair salon app</h1>
-
-<h3>Add a new stylist:</h3>
-
 <div class="container">
-  <form action="/stylists" method="post">
-    <label for="name">Name:</label>
-    <input id="name" name="name" type="text">
-
-    <button type="submit" class="btn btn-primary-outline">Add Stylist</button>
-  </form>
-</div>
-
-<div class="container">
-  <% if @stylists.any?() %>
-    <h5>Click on a stylist to see their clients or update information:</h5>
-
-    <ul>
-      <% @stylists.each do |stylist| %>
-      <li>
-        <a href="/stylists/<%= stylist.id() %>"><%= stylist.name() %></a>
-
-      </li>
-      <% end %>
-    </ul>
-
-  <% else %>
-    <p>There are no stylists because your staff left your hair salon after trying your food! Hire some more!</p>
-  <% end %>
-
-  <form action="/stylists/delete/" method="post">
-  <input name="_method" type="hidden" value="delete">
-
-  <label for="stylist_id">Delete a Stylist</label>
-  <select id='stylist_id' name='stylist_id' type='text'>
-    <% @stylists.each() do |stylist| %>
-    <option value="<%= stylist.id()%>"> <%= stylist.name() %> </option>
-    <% end %>
-  </select>
-
-  <button class="btn">Delete Stylist</button>
-</form>
-
+  <h1>Welcome, Guy Fieri, to your hair salon app</h1>
+  <hr>
+  <div class="options">
+    <h4><a href="/stylists">Check out your stylists</a></h4>
+    <h4><a href="/clients">Check our your clients</a></h4>
+  </div>
 </div>
